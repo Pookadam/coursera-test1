@@ -19,7 +19,7 @@ angular.module('NameCalculator', [])
       totalStringValue += string.charCodeAt(i);
     }
 
-    return totalStringValue;
+    return totalValue;
   }
 
 });
