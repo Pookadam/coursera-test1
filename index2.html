@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<body>
-
-<div ng-app="myApp" ng-controller="formCtrl">
-<form name="myform">
-<p>Food name:
-	<input name="foodbox" ng-model="foodbox"required>
-    <span ng-show="myform.foodbox.$touch && myform.foodbox.$invalid">
-    Enter food name
-    </span>
-</p>
-</div>
-<div id="errormsg"></div>
-
-<script>
-angular.module('myApp', []);
-.controller('formCtrl', function($scope) {
-   	var txtfood=$scope.foodbox.val();
-    var foodcount=txtfood.split(,);
-   }
-mop(function(txtfood){
-	return Number(txtfood);
-});
-if(foodcount<=3)
-{
-	$(#error msg).val ("Enjoy!");
-}
-else if(foodcount>3)
-{
-	$(#error msg).val ("Not Valid!");
-}
-</script>
-
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>Demo</title>
+		<script src="Scripts/angular.min.js"></script>
+		<script>
+				var module = angular.module('DemoApp',[]);
+				module.controller('DemoController',function($scope){
+				//message
+				$scope.message="Welcome...";
+				//Click function
+				&scope.ShowOutput=function(food){
+					var fooditems =food.length;
+					if(fooditem>0 && fooditems<=3)
+					$scope.message="Enjoy...";
+					else if(fooditem>3)
+					$scope.message="Invalide entery";
+					else if(fooditem==0)
+					$scope.message="Enter food item";
+				}
+			});
+			</script>
+	</head>
+	<body>
+			<div data-ng-controller="DemoController"data-ng-app="DemoApp">
+				<form name="dashboardform" novalidate>
+					<input type="text" ng-list data-ng-model="food" placeholder="Enter Food"/>
+					<input type ="button" data-ng-click="ShowOutput(food)" value="Submit"/>
+					<br/><br/>
+					<label for="message" data-ng-bind="message"></label>
+				</form>
+			</div>
+	</body>
 </html>

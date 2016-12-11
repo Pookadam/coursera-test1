@@ -1,8 +1,8 @@
 (function () {
 'use strict';
 
-angular.module('LunchCheck', []);
-.controller('LunchCheckerController', function($scope) {
+angular.module('LunchCheckapp', []);
+.controller('LunchCheckController', function($scope) {
    	var txtfood=$scope.foodbox.val();
     var foodcount=txtfood.split(,);
    }
