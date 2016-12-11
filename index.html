@@ -14,7 +14,8 @@
 <body>
    <div class="container">
      <h1>Lunch Checker</h1>
-          <div ng-controller="LunchCheckerController"></div>
+          <div ng-controller="LunchCheckerController">
+              Message of Lunch Checker is:{{foodcount}}</div>
          <div class="form-group">
              <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
@@ -24,7 +25,7 @@
              <button class="btn btn-default">Check If Too Much</button>
          </div>
          <div id="error msg"></div>
-         Message of Lunch Checker is:{{foodcount}}
+
          <div class="form-group message">
            <!-- Your message can go here. -->
          </div>
