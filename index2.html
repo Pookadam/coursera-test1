@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="formCtrl">
+<form name="myform">
+<p>Food name:
+	<input name="foodbox" ng-model="foodbox"required>
+    <span ng-show="myform.foodbox.$touch && myform.foodbox.$invalid">
+    Enter food name
+    </span>
+</p>
+</div>
+<div id="errormsg"></div>
+
+<script>
+angular.module('myApp', []);
+.controller('formCtrl', function($scope) {
+   	var txtfood=$scope.foodbox.val();
+    var foodcount=txtfood.split(,);
+   }
+mop(function(txtfood){
+	return Number(txtfood);
+});
+if(foodcount<=3)
+{
+	$(#error msg).val ("Enjoy!");
+}
+else if(foodcount>3)
+{
+	$(#error msg).val ("Not Valid!");
+}
+</script>
+
+</body>
+</html>
