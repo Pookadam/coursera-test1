@@ -18,12 +18,11 @@
          <div class="form-group">
              <input id="lunch-menu" type="text"  ng-model="message"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control" ng-keyup="ShowOutput();">
+             class="form-control" >
+             	<input type ="button" data-ng-click="ShowOutput(food)" value="Check If Too Much"/>
          </div>
 
-         <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
-         </div>
+         
          <div class="form-group message">
            <!-- Your message can go here. -->
          </div>
