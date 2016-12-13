@@ -1,35 +1,22 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Demo</title>
-		<script src="Scripts/angular.min.js"></script>
-		<script>
-				var module = angular.module('DemoApp',[]);
-				module.controller('DemoController',function($scope){
-				//message
-				$scope.message="Welcome...";
-				//Click function
-				&scope.ShowOutput=function(food){
-					var fooditems =food.length;
-					if(fooditem>0 && fooditems<=3)
-					$scope.message="Enjoy...";
-					else if(fooditem>3)
-					$scope.message="Invalide entery";
-					else if(fooditem==0)
-					$scope.message="Enter food item";
-				}
-			});
-			</script>
-	</head>
-	<body>
-			<div data-ng-controller="DemoController"data-ng-app="DemoApp">
-				<form name="dashboardform" novalidate>
-					<input type="text" ng-list data-ng-model="food" placeholder="Enter Food"/>
-					<input type ="button" data-ng-click="ShowOutput(food)" value="Submit"/>
-					<br/><br/>
-					<label for="message" data-ng-bind="message"></label>
-				</form>
-			</div>
-	</body>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>body { font-size: 1.3em; }</style>
+    <title>Name Calculator</title>
+  </head>
+  <body ng-app="NameCalculator">
+    <h1>Name Calculator</h1>
+    <div ng-controller="NameCalculatorController">
+      <div>
+        Your name:
+        <input type="text"
+          ng-model="name"
+          ng-keyup="displayNumeric();">
+      </div>
+      <div>Total Numeric value of person's name is: {{totalValue}}</div>
+    </div>
+  </body>
 </html>
