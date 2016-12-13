@@ -5,12 +5,19 @@
 		<title>Demo</title>
 		<script src="Scripts/angular.min.js"></script>
 		<script>
-				var module = angular.module('DemoApp',[]);
+				var module = angular.module('DemoApp',[])
 				module.controller('DemoController',function($scope){
 				//message
 				$scope.message="Welcome...";
 				//Click function
-				&scope.ShowOutput=function(food){
+				$scope.string=function(splitString)
+				{
+					var myString = 'apple egg milk';
+					var splits = myString.split(' ', 3);
+
+				}
+
+				$scope.ShowOutput=function(food){
 					var fooditems =food.length;
 					if(fooditem>0 && fooditems<=3)
 					$scope.message="Enjoy...";

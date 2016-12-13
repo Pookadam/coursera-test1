@@ -1,26 +1,30 @@
 (function () {
 'use strict';
 
-angular.module('NameCalculator', [])
+angular.module('DemoApp',[])
 
-.controller('NameCalculatorController', function ($scope) {
-  $scope.name = "";
-  $scope.totalValue = 0;
-
-  $scope.displayNumeric = function () {
-    var totalNameValue = calculateNumericForString($scope.name);
-    $scope.totalValue = totalNameValue;
-  };
-
-
-  function calculateNumericForString(string) {
-    var totalStringValue = 0;
-    for (var i = 0; i < string.length; i++) {
-      totalStringValue += string.charCodeAt(i);
+.controller('DemoController',function($scope){
+ //message
+   $scope.message="Welcome...";
+ //Click function
+   &scope.ShowOutput=function(food){
+   var fooditems =food.length;
+   var i;
+   var k=0;
+   for(i=0;i<=fooditem;i++)
+   {
+    var j== str.charCodeAt(i);
+    if(j=44)
+    {
+      k++;
     }
-
-    return totalStringValue;
-  }
+   }
+   if(k>0 && k<=3)
+   $scope.message="Enjoy...";
+   else if(k>3)
+   $scope.message="Too much food";
+   else if(k==0)
+   $scope.message="Enter food item";
 
 });
 
