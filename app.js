@@ -20,15 +20,15 @@ angular.module('LunchCheck',[])
                   'border':'2px solid red'
               }
           }
-          else if(lunchlist.lengt<=3){
-            $scope.message="Enjoy";
-            $scope.messageColour.style={
+          else if(lunchlist.length <= 3){
+            $scope.message = "Enjoy";
+            $scope.messageColour.style = {
                 'colour':'green',
                 'border':'2px solid green'
               }
           }
           else{
-            $scope.message="Too much food";
+            $scope.message="Too much ...!!!";
             $scope.messageColour.style={
                 'colour':'green',
                 'border':'2px solid green'
