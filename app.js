@@ -20,7 +20,7 @@ angular.module('LunchCheck',[])
                   'border':'2px solid red'
               }
           }
-          if(lunchlist.length <= 3 && lunchlist.length < 0){
+          if(lunchlist.length <= 3 && lunchlist.length > 0){
             $scope.message = "Enjoy";
             $scope.messageColour.style = {
                 'colour':'green',
