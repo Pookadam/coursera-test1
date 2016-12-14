@@ -13,18 +13,20 @@ angular.module('LunchCheck',[])
       $scope.LunchLimitChecker=function(){
           var lunchlist=$scope.lunch;
           lunchlist=lunchlist.split(',');
-          if(lunchlist.length == 0){
-              $scope.message="please enter data first";
-              $scope.messageColour.style={
-                  'colour':'red',
-                  'border':'2px solid red'
-              }
-          }
+
           if(lunchlist.length <= 3 && lunchlist.length > 0){
             $scope.message = "Enjoy";
             $scope.messageColour.style = {
                 'colour':'green',
                 'border':'2px solid green'
+              }
+          }
+
+          else  if(lunchlist.length == 0){
+              $scope.message="please enter data first";
+              $scope.messageColour.style={
+                  'colour':'red',
+                  'border':'2px solid red'
               }
           }
           else{
