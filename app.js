@@ -14,7 +14,7 @@ angular.module('LunchCheck',[])
           var lunchlist=$scope.lunch;
           lunchlist=lunchlist.split(',');
 
-              if(lunchlist.length == 0){
+            if(lunchlist == ''){
               $scope.message="please enter data first";
               $scope.messageColour.style={
                   'colour':'red',
@@ -22,14 +22,14 @@ angular.module('LunchCheck',[])
               }
           }
 
-          if(lunchlist.length <= 3 && lunchlist.length > 0){
+          else if(lunchlist.length <= 3 && lunchlist.length > 0){
             $scope.message = "Enjoy";
             $scope.messageColour.style = {
                 'colour':'green',
                 'border':'2px solid green'
               }
           }
-          
+
           if(lunchlist.lengt > 3){
             $scope.message="Too much ...!!!";
             $scope.messageColour.style={
