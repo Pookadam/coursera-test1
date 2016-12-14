@@ -22,7 +22,7 @@ angular.module('LunchCheck',[])
               }
           }
 
-          else  if(lunchlist.length == 0){
+            if(lunchlist.length == 0){
               $scope.message="please enter data first";
               $scope.messageColour.style={
                   'colour':'red',
