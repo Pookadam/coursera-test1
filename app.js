@@ -29,7 +29,7 @@ angular.module('LunchCheck',[])
                   'border':'2px solid red'
               }
           }
-          else{
+          if(lunchlist.lengt > 3){
             $scope.message="Too much ...!!!";
             $scope.messageColour.style={
                 'colour':'green',
