@@ -1,32 +1,39 @@
 (function () {
 'use strict';
 
-angular.module('DemoApp',[])
+angular.module('LunchCheck',[])
 
-.controller('DemoController',function($scope){
- //message
-   $scope.message="Welcome...";
- //Click function
-   &scope.ShowOutput=function(food){
-   var fooditems =food.length;
-   var i;
-   var k=0;
-   for(i=0;i<=fooditem;i++)
-   {
-    var j== str.charCodeAt(i);
-    if(j=44)
-    {
-      k++;
+.controller('LunchCheckController',LunchCheckController);
+
+  LunchCheckController.$inject=['$scope'];
+    function LunchCheckController($scope){
+      $scope.lunch='';
+      $scope.message;
+      $scope.messageColour={};
+      $scope.LunchLimitChecker=function(){
+          var lunchlist=$scope.lunch;
+          lunchlist=lunchlist.split(',');
+          if(lunchlist==''){
+              $scope.message="please enter data first";
+              $scope.messageColour.style={
+                  'colour':'red',
+                  'border':'2px solid red'
+              }
+          }
+          else if(lunchlist.lengt<=3){
+            $scope.message="Enjoy";
+            $scope.messageColour.style={
+                'colour':'green',
+                'border':'2px solid green'
+              }
+          }
+          else{
+            $scope.message="Too much food";
+            $scope.messageColour.style={
+                'colour':'green',
+                'border':'2px solid green'
+              }
+          }
+      };
     }
-   }
-   if(k>0 && k<=3)
-   $scope.message="Enjoy...";
-   else if(k>3)
-   $scope.message="Too much food";
-   else if(k==0)
-   $scope.message="Enter food item";
-
-});
-
-
-})();
+  })();

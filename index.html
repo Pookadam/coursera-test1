@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="DemoApp">
+<html lang="en" ng-app="LunchCheck">
   <head>
     <title>Lunch Checker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,23 +10,23 @@
       .message { font-size: 1.3em; font-weight: bold; }
     </style>
   </head>
-<body>
-  <div ng-controller="DemoController"></div>
+<body ng-controller='LunchCheckController' >
    <div class="container">
      <h1>Lunch Checker</h1>
 
          <div class="form-group">
-             <input id="lunch-menu" type="text"  ng-model="message"
+             <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control" >
-             	<input type ="button" data-ng-click="ShowOutput(food)" value="Check If Too Much"/>
+             class="form-control" ng-model="lunch" >
          </div>
-
-         
-         <div class="form-group message">
-           <!-- Your message can go here. -->
+         <div class="form-group">
+           <button class="btn btn-default" ng-click=LunchLimitChecker() ng-model="message">Check If Too Much</button>
+           <i>Empty item are considered in the count</i>
          </div>
-   </div>
-
-</body>
+      </div>
+        <div ng-style="messageColour.style" class="form-group message">
+          <div>{{message}}</div>
+        </div>
+      </div>
+  </body>
 </html>
