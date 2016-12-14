@@ -13,7 +13,7 @@ angular.module('LunchCheck',[])
       $scope.LunchLimitChecker=function(){
           var lunchlist=$scope.lunch;
           lunchlist=lunchlist.split(',');
-          if(lunchlist==''){
+          if(lunchlist.length == 0){
               $scope.message="please enter data first";
               $scope.messageColour.style={
                   'colour':'red',
