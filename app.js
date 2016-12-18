@@ -1,24 +1,50 @@
-(function () {
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('MsgApp', [])
-.controller('MsgController', MsgController);
+  angular
+    .module('ShoppingListCheckOff', [])
+    .controller('ToBuyController', ToBuyController)
+    .controller('AlreadyBoughtController', AlreadyBoughtController)
+    .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
-MsgController.$inject = ['$scope', '$filter'];
-function MsgController($scope, $filter) {
-  $scope.name = "Yaakov";
-  $scope.stateOfBeing = "hungry";
-  $scope.cookieCost = .45;
+  ToBuyController.$inject = ['ShoppingListCheckOffService'];
+  AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 
-  $scope.sayMessage = function () {
-    var msg = "Yaakov likes to eat healthy snacks at night!";
-    var output = $filter('uppercase')(msg);
-    return output;
-  };
+  function ToBuyController(ShoppingListCheckOffService) {
+    var buy = this;
+    buy.buyItem = function(itemIndex) {
+      ShoppingListCheckOffService.buyItem(itemIndex);
+    }
+    buy.items = ShoppingListCheckOffService.getAvailableItems();
+  }
 
-  $scope.feedYaakov = function () {
-    $scope.stateOfBeing = "fed";
-  };
-}
+  function AlreadyBoughtController(ShoppingListCheckOffService) {
+    var bought = this;
+    bought.items = ShoppingListCheckOffService.getBoughtItems();
+  }
 
+  function ShoppingListCheckOffService() {
+    var service = this;
+    var boughtList = [];
+    var buyList = [
+      { name: "Colddrinks",       quantity: 10 },
+      { name: "Cheese Cubes", quantity: 5 },
+      { name: "Choclates", quantity: 20 },
+      { name: "Eggs",  quantity: 12 },
+      { name: "Brown Bread",  quantity: 3 }
+    ];
+
+    service.buyItem = function(itemIndex) {
+      boughtList.push(buyList[itemIndex]);
+      buyList.splice(itemIndex, 1);
+    };
+
+    service.getAvailableItems = function() {
+      return buyList;
+    };
+
+    service.getBoughtItems = function() {
+      return boughtList;
+    };
+  }
 })();
