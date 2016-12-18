@@ -1,32 +1,24 @@
-<!doctype html>
-<html lang="en" ng-app="LunchCheck">
+<!DOCTYPE html>
+<html ng-app='MsgApp'>
   <head>
-    <title>Lunch Checker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <meta charset="utf-8">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
-    <style>
-      .message { font-size: 1.3em; font-weight: bold; }
-    </style>
+    <style> body { font-size: 1.2em; }</style>
+    <title>Filters</title>
   </head>
-<body ng-controller='LunchCheckController' >
-   <div class="container">
-     <h1>Lunch Checker</h1>
+  <body>
+    <h1>Filters</h1>
+    <div ng-controller='MsgController'>
+      {{name}} has a message for you: <br>
+      {{sayMessage()}}
+      <div>
+        <button ng-click="feedYaakov()">Feed Yaakov</button>
+        Cost: {{ cookieCost | currency : "#blah" : 4 }}
+        <br>
 
-         <div class="form-group">
-             <input id="lunch-menu" type="text"
-             placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control" ng-model="lunch" >
-         </div>
-         <div class="form-group">
-           <button class="btn btn-default" ng-click=LunchLimitChecker() ng-model="message">Check If Too Much</button>
-           <i>Empty item are considered in the count</i>
-         </div>
+        <img ng-src="images/yaakov_{{stateOfBeing}}.png">
       </div>
-        <div ng-style="messageColour.style" class="form-group message">
-          <div>{{message}}</div>
-        </div>
-      </div>
+    </div>
   </body>
 </html>

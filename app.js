@@ -1,43 +1,24 @@
 (function () {
 'use strict';
 
-angular.module('LunchCheck',[])
+angular.module('MsgApp', [])
+.controller('MsgController', MsgController);
 
-.controller('LunchCheckController',LunchCheckController);
+MsgController.$inject = ['$scope', '$filter'];
+function MsgController($scope, $filter) {
+  $scope.name = "Yaakov";
+  $scope.stateOfBeing = "hungry";
+  $scope.cookieCost = .45;
 
-  LunchCheckController.$inject=['$scope'];
-    function LunchCheckController($scope){
-      $scope.lunch='';
-      $scope.message;
-      $scope.messageColour={};
-      $scope.LunchLimitChecker=function(){
-          var lunchlist=$scope.lunch;
-          lunchlist=lunchlist.split(',');
+  $scope.sayMessage = function () {
+    var msg = "Yaakov likes to eat healthy snacks at night!";
+    var output = $filter('uppercase')(msg);
+    return output;
+  };
 
-            if(lunchlist == ''){
-              $scope.message="please enter data first";
-              $scope.messageColour.style={
-                  'colour':'red',
-                  'border':'2px solid red'
-              }
-          }
+  $scope.feedYaakov = function () {
+    $scope.stateOfBeing = "fed";
+  };
+}
 
-          else if(lunchlist.length <= 3){
-            $scope.message = "Enjoy";
-            $scope.messageColour.style = {
-                'colour':'green',
-                'border':'2px solid green'
-              }
-          }
-
-          else{
-            $scope.message="Too much ...!!!";
-            $scope.messageColour.style={
-                'colour':'green',
-                'border':'2px solid green'
-              }
-          }
-
-      };
-    }
-  })();
+})();
