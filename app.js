@@ -27,11 +27,11 @@
     var service = this;
     var boughtList = [];
     var buyList = [
-      { name: "Colddrinks",       quantity: 10 },
-      { name: "Cheese Cubes", quantity: 5 },
+      { name: "cake",       quantity: 5 },
+      { name: "icecream", quantity: 10 },
       { name: "Choclates", quantity: 20 },
-      { name: "Eggs",  quantity: 12 },
-      { name: "Brown Bread",  quantity: 3 }
+      { name: "butter",  quantity: 15 },
+      { name: " Bread",  quantity: 6 }
     ];
 
     service.buyItem = function(itemIndex) {
