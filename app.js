@@ -1,50 +1,65 @@
-(function() {
-  'use strict';
+(function () {
+'use strict';
 
-  angular
-    .module('ShoppingListCheckOff', [])
-    .controller('ToBuyController', ToBuyController)
-    .controller('AlreadyBoughtController', AlreadyBoughtController)
-    .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
+angular.module('MenuCategoriesApp', [])
+.controller('MenuCategoriesController', MenuCategoriesController)
+.service('MenuCategoriesService', MenuCategoriesService)
+.constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
 
-  ToBuyController.$inject = ['ShoppingListCheckOffService'];
-  AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 
-  function ToBuyController(ShoppingListCheckOffService) {
-    var buy = this;
-    buy.buyItem = function(itemIndex) {
-      ShoppingListCheckOffService.buyItem(itemIndex);
-    }
-    buy.items = ShoppingListCheckOffService.getAvailableItems();
-  }
+MenuCategoriesController.$inject = ['MenuCategoriesService'];
+function MenuCategoriesController(MenuCategoriesService) {
+  var menu = this;
 
-  function AlreadyBoughtController(ShoppingListCheckOffService) {
-    var bought = this;
-    bought.items = ShoppingListCheckOffService.getBoughtItems();
-  }
+  var promise = MenuCategoriesService.getMenuCategories();
 
-  function ShoppingListCheckOffService() {
-    var service = this;
-    var boughtList = [];
-    var buyList = [
-      { name: "cake",       quantity: 5 },
-      { name: "icecream", quantity: 10 },
-      { name: "Choclates", quantity: 20 },
-      { name: "butter",  quantity: 15 },
-      { name: " Bread",  quantity: 6 }
-    ];
+  promise.then(function (response) {
+    menu.categories = response.data;
+  })
+  .catch(function (error) {
+    console.log("Something went terribly wrong.");
+  });
 
-    service.buyItem = function(itemIndex) {
-      boughtList.push(buyList[itemIndex]);
-      buyList.splice(itemIndex, 1);
-    };
+  menu.logMenuItems = function (shortName) {
+    var promise = MenuCategoriesService.getMenuForCategory(shortName);
 
-    service.getAvailableItems = function() {
-      return buyList;
-    };
+    promise.then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  };
 
-    service.getBoughtItems = function() {
-      return boughtList;
-    };
-  }
+}
+
+
+MenuCategoriesService.$inject = ['$http', 'ApiBasePath'];
+function MenuCategoriesService($http, ApiBasePath) {
+  var service = this;
+
+  service.getMenuCategories = function () {
+    var response = $http({
+      method: "GET",
+      url: (ApiBasePath + "/categories.json")
+    });
+
+    return response;
+  };
+
+
+  service.getMenuForCategory = function (shortName) {
+    var response = $http({
+      method: "GET",
+      url: (ApiBasePath + "/menu_items.json"),
+      params: {
+        category: shortName
+      }
+    });
+
+    return response;
+  };
+
+}
+
 })();
