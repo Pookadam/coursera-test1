@@ -1,32 +1,27 @@
 <!doctype html>
-<html lang="en">
- <head>
-   <title>Narrow Down Your Menu Choice</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="styles/bootstrap.min.css">
-   <link rel="stylesheet" href="styles/styles.css">
- </head>
+<html lang="en" ng-app="MenuApp">
+  <head>
+    <title>Davids-Restaurant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<body bgcolor="lightgrey" text="darkblue" link="darkblue" vlink="darkblue">
+  <h1 align="middle"><font color="blue" face="Lucida Calligraphy">Welcome To Davids-Restaturant!</font></h1>
 
- <body ng-app="NarrowItDownApp">
-   <div class="container" ng-controller="NarrowItDownController as list">
-      <h1>Narrow Down Your Chinese Menu Choice</h1>
+  <ui-view></ui-view>
 
-      <div class="form-group">
-          <input type="text" placeholder="search term" class="form-control" ng-model="list.searchTerm">
-      </div>
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/angular-ui-router.min.js"></script>
 
-      <div class="form-group narrow-button">
-          <button class="btn btn-primary" ng-click="list.getMatchedMenuItems()">Narrow It Down For Me!</button>
-      </div>
+  <script src="src/data.module.js"></script>
+  <script src="src/home/menuapp.module.js"></script>
 
-      <found-items found-items="list.found" on-remove="list.removeItem(index)"></found-items>
+  <script src="src/routes.js"></script>
+  <script src="src/categories/categories.component.js"></script>
+  <script src="src/categories/menudata.service.js"></script>
+  <script src="src/categories/menulist.controller.js"></script>
+  <script src="src/items/items.component.js"></script>
+  <script src="src/items/items.controller.js"></script>
 
-      <div class="alert alert-warning" ng-if="list.warning">
-         {{list.warning}}
-      </div>
 
-   </div>
-   <script src="angular.min.js"></script>
-   <script src="app.js" ></script>
- </body>
+</body>
 </html>
