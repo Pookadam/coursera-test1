@@ -1,0 +1,22 @@
+.myInfo {
+    margin: 0 auto;
+    padding: 20px;
+}
+.myInfo div {
+    width: 300px;
+    margin: 0 auto;
+    font-size: .8em;
+    margin: 10px;
+}
+
+.ng-touched.ng-valid {
+  border: 2px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border: 2px red solid;
+}
+
+#info {
+  margin-top: 20px;
+}

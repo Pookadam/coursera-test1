@@ -1,0 +1,43 @@
+<div class="container">
+
+
+
+<form name="formSignUp" novalidate >
+  <div class="alert alert-success" ng-if="signupCtrl.isSaved"> Your information has been saved!!</div>
+  <div class="form-group">
+    <label for="firstname">First Name</label>
+  <input name="firstName" ng-model="signupCtrl.user.firstName" required ng-minlength="4" type="text"/>
+  <span  class="alert alert-danger" ng-if="(formSignUp.firstName.$error.minlength || formSignUp.firstName.$error.required) && formSignUp.firstName.$touched">
+    First Name must be at least 4 characters long!! </span>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input name="lastName" ng-model="signupCtrl.user.lastName" required ng-minlength="4" type="text"/>
+    <span class="alert alert-danger" ng-if="(formSignUp.lastName.$error.minlength || formSignUp.lastName.$error.required) && formSignUp.lastName.$touched">
+      First Name is required!! </span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input name="email" ng-model="signupCtrl.user.email" required  type="email"/>
+      <span class="alert alert-danger" ng-if="formSignUp.email.$invalid && formSignUp.email.$touched">
+        Email  should be in format : name@domain.com!! </span>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone No.</label>
+        <input name="phone" ng-model="signupCtrl.user.phone" required  type="text" pattern="(\d{3})-(\d{3})-(\d{4})"/>
+        <span class="alert alert-danger" ng-if="formSignUp.phone.$invalid && formSignUp.phone.$touched">
+          Phone must be in the format ###-###-#### </span>
+        </div>
+        <div class="form-group">
+          <label for="favDish">Favourite Dish</label>
+          <input name="favDish" ng-model="signupCtrl.user.favDish" ng-minlength=1  type="text" required  menu-validator ng-model-options="{ updateOn: 'default blur', debounce: {'default': 1500, 'blur': 0} }"
+      />
+          <span ng-if="formSignUp.$pending.menuExists && formSignUp.favDish.$touched">checking....</span>
+          <span class="alert alert-danger" ng-if="formSignUp.$error.menuExists  && formSignUp.favDish.$touched">No such menu number exists!!</span>
+          <span class="alert alert-danger" ng-if="formSignUp.favDish.$error.minlength && formSignUp.favDish.$touched">
+            Favourite Dish can not be empty!! </span>
+          </div>
+ <button type="submit" class="btn btn-default" ng-disabled="formSignUp.$invalid || signupCtrl.isSaved || formSignUp.$pending.menuExists || formSignUp.$error.menuExists" ng-click="signupCtrl.submit();">Submit</button>
+
+</form>
+</div>
